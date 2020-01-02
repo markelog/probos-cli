@@ -19,10 +19,11 @@ const cli = meow(
   {
     flags: {
       rainbow: {
-			type: 'string',
-			alias: 'r'
-		}
+        type: "string",
+        alias: "r"
+      }
+    }
   }
-});
+);
 
 index(cli.input, cli.flags);
