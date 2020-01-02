@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-"use strict";
-const meow = require("meow");
+'use strict';
+const meow = require('meow');
 
-const index = require(".");
+const index = require('.');
 
 const cli = meow(
   `
@@ -19,8 +19,8 @@ const cli = meow(
   {
     flags: {
       rainbow: {
-        type: "string",
-        alias: "r"
+        type: 'string',
+        alias: 'r'
       }
     }
   }

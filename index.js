@@ -1,14 +1,14 @@
-const chalk = require("chalk");
+const chalk = require('chalk');
 
-const git = require("./git");
-const sizes = require("./sizes");
-const send = require("./send");
+const git = require('./git');
+const sizes = require('./sizes');
+const send = require('./send');
 
 module.exports = (paths, flags = {}) => {
   const rootDir = flags.root;
 
   if (paths.length === 0) {
-    console.error(chalk.red("You have specify files to check"));
+    console.error(chalk.red('You have specify files to check'));
     process.exit(1);
     return;
   }

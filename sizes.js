@@ -1,7 +1,7 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
-const gzipSize = require("gzip-size");
+const gzipSize = require('gzip-size');
 
 function getFilepath(rootDir, filepath) {
   if (path.isAbsolute(filepath)) {
