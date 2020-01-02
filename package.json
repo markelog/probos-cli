@@ -6,7 +6,8 @@
   "scripts": {
     "fix": "prettier --ignore-path=.gitignore --write '**/*.js'",
     "lint": "prettier --ignore-path=.gitignore --check '**/*.js'",
-    "test": "jest"
+    "jest": "jest",
+    "test": "npm run lint && npm run jest"
   },
   "bin": {
     "gzip-size": "cli.js"

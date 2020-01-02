@@ -5,7 +5,7 @@ test('test the size without root', () => {
   expect(result).toEqual({
     'sizes.fixtures.js': {
       gzip: 37,
-      size: 19
+      size: 21
     }
   });
 });
@@ -15,7 +15,7 @@ test('test the size with root', () => {
   expect(result).toEqual({
     'sizes.fixtures.js': {
       gzip: 37,
-      size: 19
+      size: 21
     }
   });
 });
