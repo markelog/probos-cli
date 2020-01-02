@@ -1,4 +1,4 @@
-# Probos CLI
+# Probos CLI ![](https://github.com/markelog/probos-cli/workflows/Node%20CI/badge.svg?branch=master)
 
 > Takes the size/gzip and git info of the packages and submits them to probos
 
