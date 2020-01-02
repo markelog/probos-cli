@@ -33,9 +33,7 @@ module.exports = (paths, flags = {}) => {
         project
       };
     })
-    .then(project => {
-      send(project);
-    })
+    .then(send)
     .catch(error => {
       console.error(chalk.red(error));
       process.exit(1);
