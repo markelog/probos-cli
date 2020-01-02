@@ -20,9 +20,6 @@
   },
   "author": "Oleg Gaidarenko <markelog@gmail.com>",
   "license": "MIT",
-  "prettier": {
-    "singleQuote": true
-  },
   "dependencies": {
     "chalk": "^3.0.0",
     "gzip-size": "^5.1.1",
