@@ -1,0 +1,32 @@
+{
+  "name": "probos",
+  "version": "0.0.1",
+  "description": "Takes the size/gzip and git info of the packages and submits them to probos",
+  "main": "index.js",
+  "scripts": {
+    "fix": "prettier --ignore-path=.gitignore --write '**/*.js'",
+    "lint": "prettier --ignore-path=.gitignore --check '**/*.js'",
+    "test": "npm run lint"
+  },
+  "bin": {
+    "gzip-size": "cli.js"
+  },
+  "keywords": [
+    "probos"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "author": "Oleg Gaidarenko <markelog@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "gzip-size": "^5.1.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "last-commit-log": "^2.1.0",
+    "meow": "^6.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}
