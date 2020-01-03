@@ -7,8 +7,12 @@ module.exports = function git(gitpath) {
   return lcl
     .getLastCommit()
     .then(commit => {
-      commit.committer.date += '000';
-      commit.committer.date += '000';
+      const commiterDate = new Date(+`${commit.committer.date}000`);
+      const authorDate = new Date(+`${commit.author.date}000`);
+
+      commit.committer.date = commiterDate.toISOString();
+      commit.author.date = authorDate.toISOString();
+
       return commit;
     })
     .then(commit => {
