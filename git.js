@@ -21,13 +21,13 @@ module.exports = function git(gitpath) {
 
       var protocol = url.parse(gitUrl).protocol;
       return {
-        repository: gitUrl.slice(`${protocol}//`.length),
+        name: gitUrl.slice(`${protocol}//`.length),
         branch: {
           name: gitBranch,
           commit: {
             hash,
             date,
-            author: `${name} <${email}>`,
+            email,
             message: subject
           }
         }

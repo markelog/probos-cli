@@ -27,10 +27,10 @@ module.exports = (paths, flags = {}) => {
       console.error(chalk.red(error));
       process.exit(1);
     })
-    .then(project => {
-      project.branch.commit.report = resultSizes;
+    .then(repository => {
+      repository.branch.commit.report = resultSizes;
       return {
-        project
+        repository
       };
     })
     .then(send)
