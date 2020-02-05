@@ -5,7 +5,7 @@ test('get result from git', () => {
     const { name, commit } = data.branch;
     const { hash, author, message } = commit;
 
-    expect(data.repository).toEqual('github.com/markelog/probos-cli');
+    expect(data.name).toEqual('github.com/markelog/probos-cli');
 
     expect(name).toEqual(expect.not.stringContaining('undefined'));
     expect(hash).toEqual(expect.not.stringContaining('undefined'));
