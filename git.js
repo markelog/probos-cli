@@ -10,7 +10,12 @@ async function getDefaultBranch() {
   return stdout.trim();
 }
 
-module.exports = async function git(gitpath) {
+function getRepo(gitUrl) {
+  const { protocol } = url.parse(gitUrl);
+  return gitUrl.replace('//', '').slice(`${protocol}`.length);
+}
+
+async function git(gitpath) {
   const lcl = new LCL(gitpath);
   const commit = await lcl.getLastCommit();
   const defaultBranch = await getDefaultBranch();
@@ -23,10 +28,9 @@ module.exports = async function git(gitpath) {
 
   const { gitUrl, gitBranch, hash, subject, committer } = commit;
   const { name, email, date } = committer;
-  const { protocol } = url.parse(gitUrl);
 
   return {
-    repository: gitUrl.slice(`${protocol}//`.length),
+    repository: getRepo(gitUrl),
     defaultBranch,
     branch: {
       name: gitBranch,
@@ -38,4 +42,7 @@ module.exports = async function git(gitpath) {
       }
     }
   };
-};
+}
+
+module.exports.git = git;
+module.exports.getRepo = getRepo;

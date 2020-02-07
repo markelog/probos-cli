@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const git = require('./git');
+const { git } = require('./git');
 const sizes = require('./sizes');
 const send = require('./send');
 

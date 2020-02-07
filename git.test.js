@@ -1,4 +1,4 @@
-const git = require('./git');
+const { git, getRepo } = require('./git');
 
 test('get result from git', () => {
   return git().then(data => {
@@ -13,4 +13,10 @@ test('get result from git', () => {
     expect(author).toEqual(expect.not.stringContaining('undefined'));
     expect(message).toEqual(expect.not.stringContaining('undefined'));
   });
+});
+
+test('getRepo()', () => {
+  const result = getRepo('gh:markelog/test');
+
+  expect(result).toEqual('markelog/test');
 });
