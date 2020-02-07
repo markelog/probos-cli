@@ -26,7 +26,7 @@ module.exports = async function git(gitpath) {
   const { protocol } = url.parse(gitUrl);
 
   return {
-    name: gitUrl.slice(`${protocol}//`.length),
+    repository: gitUrl.slice(`${protocol}//`.length),
     defaultBranch,
     branch: {
       name: gitBranch,
