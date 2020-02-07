@@ -6,6 +6,7 @@ test('get result from git', () => {
     const { hash, author, message } = commit;
 
     expect(data.name).toEqual('github.com/markelog/probos-cli');
+    expect(data.defaultBranch).toEqual('master');
 
     expect(name).toEqual(expect.not.stringContaining('undefined'));
     expect(hash).toEqual(expect.not.stringContaining('undefined'));

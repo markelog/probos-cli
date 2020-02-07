@@ -1,36 +1,41 @@
-const LCL = require('last-commit-log');
 const path = require('path');
 const url = require('url');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+const LCL = require('last-commit-log');
 
-module.exports = function git(gitpath) {
+async function getDefaultBranch() {
+  const { stdout, stderr } = await exec('git symbolic-ref --short HEAD');
+
+  return stdout.trim();
+}
+
+module.exports = async function git(gitpath) {
   const lcl = new LCL(gitpath);
-  return lcl
-    .getLastCommit()
-    .then(commit => {
-      const commiterDate = new Date(+`${commit.committer.date}000`);
-      const authorDate = new Date(+`${commit.author.date}000`);
+  const commit = await lcl.getLastCommit();
+  const defaultBranch = await getDefaultBranch();
 
-      commit.committer.date = commiterDate.toISOString();
-      commit.author.date = authorDate.toISOString();
+  const commiterDate = new Date(+`${commit.committer.date}000`);
+  const authorDate = new Date(+`${commit.author.date}000`);
 
-      return commit;
-    })
-    .then(commit => {
-      const { gitUrl, gitBranch, hash, subject, committer } = commit;
-      const { name, email, date } = committer;
+  commit.committer.date = commiterDate.toISOString();
+  commit.author.date = authorDate.toISOString();
 
-      var protocol = url.parse(gitUrl).protocol;
-      return {
-        name: gitUrl.slice(`${protocol}//`.length),
-        branch: {
-          name: gitBranch,
-          commit: {
-            hash,
-            date,
-            email,
-            message: subject
-          }
-        }
-      };
-    });
+  const { gitUrl, gitBranch, hash, subject, committer } = commit;
+  const { name, email, date } = committer;
+  const { protocol } = url.parse(gitUrl);
+
+  return {
+    name: gitUrl.slice(`${protocol}//`.length),
+    defaultBranch,
+    branch: {
+      name: gitBranch,
+      commit: {
+        hash,
+        date,
+        email,
+        message: subject
+      }
+    }
+  };
 };
